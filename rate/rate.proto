@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.rate";
+option java_outer_classname = "RateProto";
+
+package raterpc;
+
+// The greeting service definition.
+service Rater {
+  // Sends a greeting
+  rpc GetSDGRate(Empty) returns (SDGRate) {}
+}
+
+// The request message containing the user's name.
+//message HelloRequest {
+//  string name = 1;
+//}
+
+message Empty {
+
+}
+
+// The response message containing the greetings
+message SDGRate {
+  float message = 1;
+}
