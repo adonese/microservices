@@ -59,10 +59,6 @@ func request(buf []byte, url string) (EbsResponse, error) {
 // EBSResponse struct template
 // something should solve it
 type EbsResponse struct {
-	Response Response `json:"ebs_response"`
-}
-
-type Response struct {
 	WorkingKey      string `json:"workingKey"`
 	ResponseCode    int    `json:"responseCode"`
 	ResponseMessage string `json:"ResponseMessage"`

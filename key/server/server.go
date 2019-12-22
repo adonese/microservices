@@ -42,9 +42,9 @@ func (s *server) GetWorkingKey(ctx context.Context, in *pb.Request) (*pb.Respons
 	log.Printf("the response is: %v", result)
 
 	return &pb.Response{
-		WorkingKey:      result.Response.WorkingKey,
-		ResponseCode:    int32(result.Response.ResponseCode),
-		ResponseMessage: result.Response.ResponseMessage,
+		WorkingKey:      result.WorkingKey,
+		ResponseCode:    int32(result.ResponseCode),
+		ResponseMessage: result.ResponseMessage,
 	}, nil
 }
 
