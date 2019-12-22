@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.rate";
+option java_outer_classname = "RateProto";
+
+package keyrpc;
+
+// The greeting service definition.
+service WorkingKey {
+  // Sends a greeting
+  rpc GetWorkingKey(Request) returns (Response) {}
+}
+
+message Request {
+  string TranDateTime = 1;
+  string TerminalID = 2;
+  string ClientID = 3;
+  int32 STAN = 4;
+}
+
+// The response message containing the greetings
+message Response {
+  string WorkingKey = 1;
+  int32 ResponseCode = 2;
+  string ResponseMessage = 3;
+}
