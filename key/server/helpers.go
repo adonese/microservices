@@ -63,9 +63,30 @@ type EbsResponse struct {
 	ResponseCode    int    `json:"responseCode"`
 	ResponseMessage string `json:"ResponseMessage"`
 }
+
 type EbsRequest struct {
 	STAN         int    `json:"systemTraceAuditNumber"`
 	TranDateTime string `json:"tranDateTime"`
 	ClientID     string `json:"clientId"`
 	TerminalID   string `json:"terminalId"`
+}
+
+type PurchaseRequest struct {
+	STAN         int    `json:"systemTraceAuditNumber"`
+	TranDateTime string `json:"tranDateTime"`
+	ClientID     string `json:"clientId"`
+	TerminalID   string `json:"terminalId"`
+	CardFields
+	AmountFields
+}
+
+type CardFields struct {
+	Pan     string `json:"PAN"`
+	Expdate string `json:"expDate"`
+	Pin     string `json:"PIN"`
+}
+
+type AmountFields struct {
+	Amount   float32 `json:"tranAmount"`
+	Currency string  `json:"tranCurrencyCode"`
 }

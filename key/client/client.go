@@ -22,7 +22,7 @@ func main() {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := pb.NewWorkingKeyClient(conn)
+	c := pb.NewPaymentAPIClient(conn)
 
 	// Contact the server and print out its response.
 
