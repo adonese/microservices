@@ -87,6 +87,109 @@ func (m *Request) GetSTAN() int32 {
 	return 0
 }
 
+type PurchaseRequest struct {
+	TranDateTime         string   `protobuf:"bytes,1,opt,name=TranDateTime,proto3" json:"TranDateTime,omitempty"`
+	TerminalID           string   `protobuf:"bytes,2,opt,name=TerminalID,proto3" json:"TerminalID,omitempty"`
+	ClientID             string   `protobuf:"bytes,3,opt,name=ClientID,proto3" json:"ClientID,omitempty"`
+	STAN                 int32    `protobuf:"varint,4,opt,name=STAN,proto3" json:"STAN,omitempty"`
+	Pan                  string   `protobuf:"bytes,5,opt,name=Pan,proto3" json:"Pan,omitempty"`
+	Expdate              string   `protobuf:"bytes,6,opt,name=Expdate,proto3" json:"Expdate,omitempty"`
+	Pin                  string   `protobuf:"bytes,7,opt,name=Pin,proto3" json:"Pin,omitempty"`
+	Currency             string   `protobuf:"bytes,8,opt,name=Currency,proto3" json:"Currency,omitempty"`
+	Amount               float32  `protobuf:"fixed32,9,opt,name=Amount,proto3" json:"Amount,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *PurchaseRequest) Reset()         { *m = PurchaseRequest{} }
+func (m *PurchaseRequest) String() string { return proto.CompactTextString(m) }
+func (*PurchaseRequest) ProtoMessage()    {}
+func (*PurchaseRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2accf5df6005b7d4, []int{1}
+}
+
+func (m *PurchaseRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PurchaseRequest.Unmarshal(m, b)
+}
+func (m *PurchaseRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PurchaseRequest.Marshal(b, m, deterministic)
+}
+func (m *PurchaseRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PurchaseRequest.Merge(m, src)
+}
+func (m *PurchaseRequest) XXX_Size() int {
+	return xxx_messageInfo_PurchaseRequest.Size(m)
+}
+func (m *PurchaseRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_PurchaseRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PurchaseRequest proto.InternalMessageInfo
+
+func (m *PurchaseRequest) GetTranDateTime() string {
+	if m != nil {
+		return m.TranDateTime
+	}
+	return ""
+}
+
+func (m *PurchaseRequest) GetTerminalID() string {
+	if m != nil {
+		return m.TerminalID
+	}
+	return ""
+}
+
+func (m *PurchaseRequest) GetClientID() string {
+	if m != nil {
+		return m.ClientID
+	}
+	return ""
+}
+
+func (m *PurchaseRequest) GetSTAN() int32 {
+	if m != nil {
+		return m.STAN
+	}
+	return 0
+}
+
+func (m *PurchaseRequest) GetPan() string {
+	if m != nil {
+		return m.Pan
+	}
+	return ""
+}
+
+func (m *PurchaseRequest) GetExpdate() string {
+	if m != nil {
+		return m.Expdate
+	}
+	return ""
+}
+
+func (m *PurchaseRequest) GetPin() string {
+	if m != nil {
+		return m.Pin
+	}
+	return ""
+}
+
+func (m *PurchaseRequest) GetCurrency() string {
+	if m != nil {
+		return m.Currency
+	}
+	return ""
+}
+
+func (m *PurchaseRequest) GetAmount() float32 {
+	if m != nil {
+		return m.Amount
+	}
+	return 0
+}
+
 // The response message containing the greetings
 type Response struct {
 	WorkingKey           string   `protobuf:"bytes,1,opt,name=WorkingKey,proto3" json:"WorkingKey,omitempty"`
@@ -101,7 +204,7 @@ func (m *Response) Reset()         { *m = Response{} }
 func (m *Response) String() string { return proto.CompactTextString(m) }
 func (*Response) ProtoMessage()    {}
 func (*Response) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2accf5df6005b7d4, []int{1}
+	return fileDescriptor_2accf5df6005b7d4, []int{2}
 }
 
 func (m *Response) XXX_Unmarshal(b []byte) error {
@@ -145,29 +248,36 @@ func (m *Response) GetResponseMessage() string {
 
 func init() {
 	proto.RegisterType((*Request)(nil), "keyrpc.Request")
+	proto.RegisterType((*PurchaseRequest)(nil), "keyrpc.PurchaseRequest")
 	proto.RegisterType((*Response)(nil), "keyrpc.Response")
 }
 
 func init() { proto.RegisterFile("key.proto", fileDescriptor_2accf5df6005b7d4) }
 
 var fileDescriptor_2accf5df6005b7d4 = []byte{
-	// 247 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x90, 0xc1, 0x4b, 0xc3, 0x30,
-	0x14, 0xc6, 0xad, 0x6e, 0x73, 0x7d, 0x4c, 0x26, 0x39, 0x95, 0x09, 0x32, 0x7a, 0xea, 0xa9, 0x07,
-	0xf5, 0x1f, 0xb0, 0x2b, 0xc8, 0x10, 0x65, 0xc4, 0x82, 0xe7, 0xa8, 0x1f, 0x25, 0x74, 0x4b, 0x6a,
-	0x12, 0xc1, 0x1e, 0xfc, 0xdf, 0xa5, 0x59, 0xa7, 0xed, 0x6e, 0x79, 0xbf, 0x3c, 0xde, 0xf7, 0xf1,
-	0xa3, 0xb0, 0x42, 0x93, 0xd6, 0x46, 0x3b, 0xcd, 0x26, 0x15, 0x1a, 0x53, 0xbf, 0xc7, 0x3f, 0x74,
-	0xce, 0xf1, 0xf9, 0x05, 0xeb, 0x58, 0x4c, 0xb3, 0xc2, 0x08, 0x95, 0x0b, 0x87, 0x42, 0xee, 0x10,
-	0x05, 0xcb, 0x20, 0x09, 0xf9, 0x80, 0xb1, 0x6b, 0xa2, 0x02, 0x66, 0x27, 0x95, 0xd8, 0xae, 0xf3,
-	0xe8, 0xd4, 0x6f, 0xf4, 0x08, 0x5b, 0xd0, 0x74, 0xb5, 0x95, 0x50, 0x6e, 0x9d, 0x47, 0x67, 0xfe,
-	0xf7, 0x6f, 0x66, 0x8c, 0x46, 0x2f, 0xc5, 0xfd, 0x73, 0x34, 0x5a, 0x06, 0xc9, 0x98, 0xfb, 0x77,
-	0xfc, 0x4d, 0x53, 0x0e, 0x5b, 0x6b, 0x65, 0xfd, 0xed, 0x57, 0x6d, 0x2a, 0xa9, 0xca, 0x47, 0x34,
-	0x5d, 0x7a, 0x8f, 0xb4, 0xfd, 0x0e, 0xbb, 0x2b, 0xfd, 0x01, 0x9f, 0x3e, 0xe6, 0x03, 0xc6, 0x12,
-	0x9a, 0x1f, 0xe6, 0x27, 0x58, 0x2b, 0x4a, 0x74, 0x35, 0x8e, 0xf1, 0x4d, 0xd6, 0x4f, 0x63, 0x77,
-	0x74, 0xf1, 0x00, 0xd7, 0x03, 0xf3, 0x74, 0x2f, 0x28, 0xed, 0xec, 0x2c, 0x2e, 0xff, 0xc1, 0xfe,
-	0x50, 0x7c, 0x92, 0x5d, 0xd1, 0x4c, 0xea, 0xb4, 0x6c, 0xa9, 0x11, 0x0e, 0x59, 0xc8, 0x85, 0xc3,
-	0xa6, 0xf5, 0xbb, 0x09, 0xde, 0x26, 0x5e, 0xf4, 0xed, 0x6f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xa1,
-	0x4e, 0xf3, 0xae, 0x75, 0x01, 0x00, 0x00,
+	// 347 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x92, 0xbd, 0x4f, 0xeb, 0x30,
+	0x14, 0xc5, 0x5f, 0xfa, 0x91, 0x36, 0xf7, 0xf5, 0xa9, 0x95, 0x87, 0x87, 0x55, 0x24, 0x54, 0x65,
+	0xca, 0x94, 0x01, 0x98, 0xd8, 0xfa, 0x81, 0xaa, 0x0a, 0x81, 0xa2, 0x10, 0x89, 0xd9, 0xb4, 0x57,
+	0xc5, 0x6a, 0x63, 0x07, 0xc7, 0x91, 0x9a, 0x01, 0xfe, 0x6d, 0x56, 0x14, 0xd7, 0x81, 0xb6, 0x62,
+	0x67, 0xbb, 0xe7, 0x97, 0x13, 0x5f, 0x1f, 0xdf, 0x0b, 0xde, 0x06, 0xcb, 0x30, 0x53, 0x52, 0x4b,
+	0xe2, 0x6e, 0xb0, 0x54, 0xd9, 0xd2, 0x7f, 0x83, 0x4e, 0x8c, 0xaf, 0x05, 0xe6, 0x9a, 0xf8, 0xd0,
+	0x4b, 0x14, 0x13, 0x33, 0xa6, 0x31, 0xe1, 0x29, 0x52, 0x67, 0xe4, 0x04, 0x5e, 0x7c, 0xc4, 0xc8,
+	0x05, 0x40, 0x82, 0x2a, 0xe5, 0x82, 0x6d, 0x17, 0x33, 0xda, 0x30, 0x8e, 0x03, 0x42, 0x86, 0xd0,
+	0x9d, 0x6e, 0x39, 0x0a, 0xbd, 0x98, 0xd1, 0xa6, 0xf9, 0xfa, 0xa5, 0x09, 0x81, 0xd6, 0x63, 0x32,
+	0x7e, 0xa0, 0xad, 0x91, 0x13, 0xb4, 0x63, 0x53, 0xfb, 0x1f, 0x0e, 0xf4, 0xa3, 0x42, 0x2d, 0x5f,
+	0x58, 0x8e, 0xbf, 0x78, 0x0f, 0x32, 0x80, 0x66, 0xc4, 0x04, 0x6d, 0x1b, 0x6b, 0x55, 0x12, 0x0a,
+	0x9d, 0xdb, 0x5d, 0xb6, 0x62, 0x1a, 0xa9, 0x6b, 0x68, 0x2d, 0x8d, 0x97, 0x0b, 0xda, 0xb1, 0x5e,
+	0x2e, 0x4c, 0xb7, 0x42, 0x29, 0x14, 0xcb, 0x92, 0x76, 0x6d, 0x37, 0xab, 0xc9, 0x7f, 0x70, 0xc7,
+	0xa9, 0x2c, 0x84, 0xa6, 0xde, 0xc8, 0x09, 0x1a, 0xb1, 0x55, 0xfe, 0x0e, 0xba, 0x31, 0xe6, 0x99,
+	0x14, 0xb9, 0x49, 0xf3, 0x24, 0xd5, 0x86, 0x8b, 0xf5, 0x1d, 0x96, 0x36, 0xef, 0x01, 0xa9, 0x5e,
+	0xa4, 0xf6, 0x4e, 0xe5, 0x0a, 0x4d, 0xde, 0x76, 0x7c, 0xc4, 0x48, 0x00, 0xfd, 0x5a, 0xdf, 0x63,
+	0x9e, 0xb3, 0x35, 0xda, 0xe0, 0xa7, 0xf8, 0xf2, 0x1d, 0x20, 0x62, 0x65, 0x8a, 0x42, 0x8f, 0xa3,
+	0x05, 0xb9, 0x86, 0x7f, 0x73, 0xd4, 0x07, 0xcd, 0xfa, 0xe1, 0x7e, 0x35, 0x42, 0x3b, 0x8f, 0xe1,
+	0xe0, 0x1b, 0xec, 0x0f, 0xf2, 0xff, 0x90, 0x1b, 0xf8, 0x3b, 0x47, 0x5d, 0x4f, 0x8e, 0x9c, 0xd5,
+	0x96, 0x93, 0x59, 0xfe, 0xf4, 0xef, 0xe4, 0x1c, 0x7a, 0x5c, 0x86, 0xeb, 0x8a, 0x2a, 0xa6, 0x71,
+	0xe2, 0xc5, 0x4c, 0x63, 0x54, 0x6d, 0x65, 0xe4, 0x3c, 0xbb, 0x66, 0x3d, 0xaf, 0x3e, 0x03, 0x00,
+	0x00, 0xff, 0xff, 0x02, 0x00, 0x0f, 0x3f, 0xab, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -178,74 +288,110 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// WorkingKeyClient is the client API for WorkingKey service.
+// PaymentAPIClient is the client API for PaymentAPI service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type WorkingKeyClient interface {
+type PaymentAPIClient interface {
 	// Sends a greeting
 	GetWorkingKey(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
+	GetPurchase(ctx context.Context, in *PurchaseRequest, opts ...grpc.CallOption) (*Response, error)
 }
 
-type workingKeyClient struct {
+type paymentAPIClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewWorkingKeyClient(cc *grpc.ClientConn) WorkingKeyClient {
-	return &workingKeyClient{cc}
+func NewPaymentAPIClient(cc *grpc.ClientConn) PaymentAPIClient {
+	return &paymentAPIClient{cc}
 }
 
-func (c *workingKeyClient) GetWorkingKey(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
+func (c *paymentAPIClient) GetWorkingKey(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := c.cc.Invoke(ctx, "/keyrpc.WorkingKey/GetWorkingKey", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/keyrpc.PaymentAPI/GetWorkingKey", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// WorkingKeyServer is the server API for WorkingKey service.
-type WorkingKeyServer interface {
+func (c *paymentAPIClient) GetPurchase(ctx context.Context, in *PurchaseRequest, opts ...grpc.CallOption) (*Response, error) {
+	out := new(Response)
+	err := c.cc.Invoke(ctx, "/keyrpc.PaymentAPI/GetPurchase", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// PaymentAPIServer is the server API for PaymentAPI service.
+type PaymentAPIServer interface {
 	// Sends a greeting
 	GetWorkingKey(context.Context, *Request) (*Response, error)
+	GetPurchase(context.Context, *PurchaseRequest) (*Response, error)
 }
 
-// UnimplementedWorkingKeyServer can be embedded to have forward compatible implementations.
-type UnimplementedWorkingKeyServer struct {
+// UnimplementedPaymentAPIServer can be embedded to have forward compatible implementations.
+type UnimplementedPaymentAPIServer struct {
 }
 
-func (*UnimplementedWorkingKeyServer) GetWorkingKey(ctx context.Context, req *Request) (*Response, error) {
+func (*UnimplementedPaymentAPIServer) GetWorkingKey(ctx context.Context, req *Request) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWorkingKey not implemented")
 }
-
-func RegisterWorkingKeyServer(s *grpc.Server, srv WorkingKeyServer) {
-	s.RegisterService(&_WorkingKey_serviceDesc, srv)
+func (*UnimplementedPaymentAPIServer) GetPurchase(ctx context.Context, req *PurchaseRequest) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPurchase not implemented")
 }
 
-func _WorkingKey_GetWorkingKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func RegisterPaymentAPIServer(s *grpc.Server, srv PaymentAPIServer) {
+	s.RegisterService(&_PaymentAPI_serviceDesc, srv)
+}
+
+func _PaymentAPI_GetWorkingKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Request)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WorkingKeyServer).GetWorkingKey(ctx, in)
+		return srv.(PaymentAPIServer).GetWorkingKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/keyrpc.WorkingKey/GetWorkingKey",
+		FullMethod: "/keyrpc.PaymentAPI/GetWorkingKey",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WorkingKeyServer).GetWorkingKey(ctx, req.(*Request))
+		return srv.(PaymentAPIServer).GetWorkingKey(ctx, req.(*Request))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _WorkingKey_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "keyrpc.WorkingKey",
-	HandlerType: (*WorkingKeyServer)(nil),
+func _PaymentAPI_GetPurchase_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PurchaseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentAPIServer).GetPurchase(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/keyrpc.PaymentAPI/GetPurchase",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentAPIServer).GetPurchase(ctx, req.(*PurchaseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _PaymentAPI_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "keyrpc.PaymentAPI",
+	HandlerType: (*PaymentAPIServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetWorkingKey",
-			Handler:    _WorkingKey_GetWorkingKey_Handler,
+			Handler:    _PaymentAPI_GetWorkingKey_Handler,
+		},
+		{
+			MethodName: "GetPurchase",
+			Handler:    _PaymentAPI_GetPurchase_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -6,10 +6,11 @@ option java_outer_classname = "RateProto";
 
 package keyrpc;
 
-// The greeting service definition.
-service WorkingKey {
+// working key service
+service PaymentAPI {
   // Sends a greeting
   rpc GetWorkingKey(Request) returns (Response) {}
+  rpc GetPurchase(PurchaseRequest) returns (Response) {}
 }
 
 message Request {
@@ -17,6 +18,19 @@ message Request {
   string TerminalID = 2;
   string ClientID = 3;
   int32 STAN = 4;
+}
+
+
+message PurchaseRequest {
+  string TranDateTime = 1;
+  string TerminalID = 2;
+  string ClientID = 3;
+  int32 STAN = 4;
+  string Pan = 5;
+  string Expdate = 6;
+  string Pin = 7;
+  string Currency = 8;
+  float Amount = 9;
 }
 
 // The response message containing the greetings
