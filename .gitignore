@@ -1,2 +1,4 @@
-client/client
-server/server
+raterpc/client/client
+raterpc/server/server
+key/client/client
+key/server/server
