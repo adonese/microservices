@@ -22,15 +22,21 @@ func main() {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := pb.NewRaterClient(conn)
+	c := pb.NewWorkingKeyClient(conn)
 
 	// Contact the server and print out its response.
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	r, err := c.GetSDGRate(ctx, &pb.Empty{})
+	req := &pb.Request{
+		TerminalID: "18000377",
+		TranDateTime: "191222132700",
+		STAN: 32,
+		ClientID: "ACTS",
+	}
+	r, err := c.GetWorkingKey(ctx, req)
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
-	log.Printf("Greeting: %f", r.Message)
+	log.Printf("Greeting: %v", r.GetWorkingKey())
 }

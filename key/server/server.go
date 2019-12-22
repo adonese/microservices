@@ -2,10 +2,10 @@ package main
 
 import (
 	"context"
-	"fmt"
+	"encoding/json"
+	"errors"
 	"log"
 	"net"
-	"strconv"
 
 	pb "github.com/adonese/microservices/key/key"
 
@@ -20,20 +20,32 @@ const (
 type server struct{}
 
 // SayHello implements helloworld.GreeterServer
-func (s *server) GetWorkingKey(ctx context.Context, in *pb.Empty) (*pb.SDGRate, error) {
+func (s *server) GetWorkingKey(ctx context.Context, in *pb.Request) (*pb.Response, error) {
 
-	rate := getRate()
-	return &pb.SDGRate{Message: rate}, nil
-}
+	req := EbsRequest{
+		TranDateTime: in.TranDateTime,
+		TerminalID:   in.TerminalID,
+		ClientID:     in.ClientID,
+		STAN:         int(in.STAN),
+	}
 
-func getRate() float32 {
-	a := extract("https://www.price-today.com/currency-prices-sudan/")
-	fmt.Printf("The values are: %v\n", a)
-	_, r := getUSD(a)
+	url := "https://beta.soluspay.net/api/workingKey"
+	b, err := json.Marshal(&req)
+	if err != nil {
+		log.Printf("The error is: %v", err)
+		return nil, errors.New("it doesn't work")
+	}
+	result, err := request(b, url)
+	if err != nil {
+		return nil, err
+	}
+	log.Printf("the response is: %v", result)
 
-	f, _ := strconv.ParseFloat(r, 32)
-
-	return float32(f)
+	return &pb.Response{
+		WorkingKey:      result.Response.WorkingKey,
+		ResponseCode:    int32(result.Response.ResponseCode),
+		ResponseMessage: result.Response.ResponseMessage,
+	}, nil
 }
 
 func main() {
@@ -44,7 +56,7 @@ func main() {
 	s := grpc.NewServer()
 
 	var t server
-	pb.RegisterRaterServer(s, &t)
+	pb.RegisterWorkingKeyServer(s, &t)
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
