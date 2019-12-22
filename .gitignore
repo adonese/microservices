@@ -2,3 +2,5 @@ raterpc/client/client
 raterpc/server/server
 key/client/client
 key/server/server
+*/client/client
+*/server/server
