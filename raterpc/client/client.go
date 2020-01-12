@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	pb "rateit/rate"
+	pb "github.com/adonese/microservices/raterpc/rate"
 
 	"google.golang.org/grpc"
 )
