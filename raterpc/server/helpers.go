@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"golang.org/x/net/html"
+	"log"
 )
 
 //extract extracts links of provided URL
@@ -51,10 +52,13 @@ func extract(domain string) []string {
 
 func getUSD(links []string) (bool, string) {
 	for i, v := range links {
-		if v == "سعر الدولار الأمريكي" {
+		log.Printf("the current string is: %v\n", v)
+		if v == "الدولار الامريكي" || strings.Contains(v, "دولار"){
 			usd := strings.Split(links[i+1], " ")
+			log.Printf("the usd from getUSD is: %v\n", usd)
 			return true, usd[0]
 		}
 	}
+	log.Printf("why are not we here?\n")
 	return false, ""
 }

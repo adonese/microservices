@@ -30,6 +30,7 @@ func getRate() float32 {
 	a := extract("https://www.price-today.com/currency-prices-sudan/")
 	fmt.Printf("The values are: %v\n", a)
 	_, r := getUSD(a)
+	fmt.Printf("The rate currently is: %v\n", r)
 
 	f, _ := strconv.ParseFloat(r, 32)
 
