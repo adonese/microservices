@@ -55,7 +55,7 @@ func getUSD(links []string) (bool, string) {
 		log.Printf("the current string is: %v\n", v)
 		if v == "الدولار الامريكي" || strings.Contains(v, "دولار"){
 			usd := strings.Split(links[i+1], " ")
-			log.Printf("the usd from getUSD is: %v\n", usd)
+			// log.Printf("the usd from getUSD is: %v\n", usd)
 			return true, usd[0]
 		}
 	}
