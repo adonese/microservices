@@ -55,13 +55,14 @@ func extract(domain string) []string {
 type ebs struct {
 }
 
-func (e ebs) getOnline(url string) []string {
+func (e ebs) getOnline(url string) (bool, []string) {
 	res, err := http.Get(url)
 	if err != nil {
-		return nil
+		return false, nil
 	}
 	defer res.Body.Close()
-	return e.extractEBS(res.Body)
+	d := e.extractEBS(res.Request.Body)
+	return len(d) >= 2, d
 }
 
 func (e ebs) extractEBS(data io.Reader) []string {

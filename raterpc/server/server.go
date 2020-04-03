@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log"
 	"net"
@@ -28,7 +29,10 @@ func (s *server) GetSDGRate(ctx context.Context, in *pb.Empty) (*pb.SDGRate, err
 
 func (s *server) GetDonations(ctx context.Context, in *pb.DonationURL) (*pb.TotalDonations, error) {
 	var e ebs
-	data := e.getOnline(in.GetUrl())
+	ok, data := e.getOnline(in.GetUrl())
+	if !ok {
+		return nil, errors.New("couldn't get exact data from ebs")
+	}
 	number, _ := strconv.ParseFloat(data[0], 32)
 	amount, _ := strconv.ParseFloat(data[1], 32)
 
