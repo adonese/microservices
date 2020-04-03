@@ -94,7 +94,7 @@ func (e ebs) extractEBS(data io.Reader) []string {
 func getUSD(links []string) (bool, string) {
 	for i, v := range links {
 		log.Printf("the current string is: %v\n", v)
-		if v == "الدولار الامريكي" || strings.Contains(v, "دولار") || strings.Contains(v, "دولار&nbsp;الامريكي") {
+		if v == "الدولار الامريكي" || strings.Contains(v, "دولار") {
 			usd := strings.Split(links[i+1], " ")
 			// log.Printf("the usd from getUSD is: %v\n", usd)
 			return true, usd[0]
