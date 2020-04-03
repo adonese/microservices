@@ -1,11 +1,13 @@
 package main
 
 import (
+	"io"
 	"net/http"
 	"strings"
 
-	"golang.org/x/net/html"
 	"log"
+
+	"golang.org/x/net/html"
 )
 
 //extract extracts links of provided URL
@@ -47,6 +49,45 @@ func extract(domain string) []string {
 	f(doc)
 
 	//
+	return links
+}
+
+type ebs struct {
+}
+
+func (e ebs) getOnline(url string) []string {
+	res, err := http.Get(url)
+	if err != nil {
+		return nil
+	}
+	defer res.Body.Close()
+	return e.extractEBS(res.Body)
+}
+
+func (e ebs) extractEBS(data io.Reader) []string {
+	var links []string
+
+	doc, err := html.Parse(data)
+	if err != nil {
+		log.Printf("Error in html parsing: %v", err)
+		return nil
+	}
+	var f func(*html.Node)
+	f = func(n *html.Node) {
+		if n.Type == html.ElementNode && n.Data == "span" {
+
+			if n.Parent.Data == "h2" {
+				log.Printf("Next data is: %#v", n.FirstChild)
+				links = append(links, n.FirstChild.Data)
+			}
+
+		}
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			f(c)
+		}
+	}
+	f(doc)
+
 	return links
 }
 

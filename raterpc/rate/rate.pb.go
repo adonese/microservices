@@ -24,6 +24,92 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type DonationURL struct {
+	Url                  string   `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DonationURL) Reset()         { *m = DonationURL{} }
+func (m *DonationURL) String() string { return proto.CompactTextString(m) }
+func (*DonationURL) ProtoMessage()    {}
+func (*DonationURL) Descriptor() ([]byte, []int) {
+	return fileDescriptor_426335fde4cae2d1, []int{0}
+}
+
+func (m *DonationURL) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DonationURL.Unmarshal(m, b)
+}
+func (m *DonationURL) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DonationURL.Marshal(b, m, deterministic)
+}
+func (m *DonationURL) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DonationURL.Merge(m, src)
+}
+func (m *DonationURL) XXX_Size() int {
+	return xxx_messageInfo_DonationURL.Size(m)
+}
+func (m *DonationURL) XXX_DiscardUnknown() {
+	xxx_messageInfo_DonationURL.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DonationURL proto.InternalMessageInfo
+
+func (m *DonationURL) GetUrl() string {
+	if m != nil {
+		return m.Url
+	}
+	return ""
+}
+
+type TotalDonations struct {
+	TotalAmount          float32  `protobuf:"fixed32,1,opt,name=total_amount,json=totalAmount,proto3" json:"total_amount,omitempty"`
+	NumberTransactions   int32    `protobuf:"varint,2,opt,name=number_transactions,json=numberTransactions,proto3" json:"number_transactions,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TotalDonations) Reset()         { *m = TotalDonations{} }
+func (m *TotalDonations) String() string { return proto.CompactTextString(m) }
+func (*TotalDonations) ProtoMessage()    {}
+func (*TotalDonations) Descriptor() ([]byte, []int) {
+	return fileDescriptor_426335fde4cae2d1, []int{1}
+}
+
+func (m *TotalDonations) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TotalDonations.Unmarshal(m, b)
+}
+func (m *TotalDonations) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TotalDonations.Marshal(b, m, deterministic)
+}
+func (m *TotalDonations) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TotalDonations.Merge(m, src)
+}
+func (m *TotalDonations) XXX_Size() int {
+	return xxx_messageInfo_TotalDonations.Size(m)
+}
+func (m *TotalDonations) XXX_DiscardUnknown() {
+	xxx_messageInfo_TotalDonations.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TotalDonations proto.InternalMessageInfo
+
+func (m *TotalDonations) GetTotalAmount() float32 {
+	if m != nil {
+		return m.TotalAmount
+	}
+	return 0
+}
+
+func (m *TotalDonations) GetNumberTransactions() int32 {
+	if m != nil {
+		return m.NumberTransactions
+	}
+	return 0
+}
+
 type Empty struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -34,7 +120,7 @@ func (m *Empty) Reset()         { *m = Empty{} }
 func (m *Empty) String() string { return proto.CompactTextString(m) }
 func (*Empty) ProtoMessage()    {}
 func (*Empty) Descriptor() ([]byte, []int) {
-	return fileDescriptor_426335fde4cae2d1, []int{0}
+	return fileDescriptor_426335fde4cae2d1, []int{2}
 }
 
 func (m *Empty) XXX_Unmarshal(b []byte) error {
@@ -67,7 +153,7 @@ func (m *SDGRate) Reset()         { *m = SDGRate{} }
 func (m *SDGRate) String() string { return proto.CompactTextString(m) }
 func (*SDGRate) ProtoMessage()    {}
 func (*SDGRate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_426335fde4cae2d1, []int{1}
+	return fileDescriptor_426335fde4cae2d1, []int{3}
 }
 
 func (m *SDGRate) XXX_Unmarshal(b []byte) error {
@@ -96,6 +182,8 @@ func (m *SDGRate) GetMessage() float32 {
 }
 
 func init() {
+	proto.RegisterType((*DonationURL)(nil), "raterpc.DonationURL")
+	proto.RegisterType((*TotalDonations)(nil), "raterpc.TotalDonations")
 	proto.RegisterType((*Empty)(nil), "raterpc.Empty")
 	proto.RegisterType((*SDGRate)(nil), "raterpc.SDGRate")
 }
@@ -103,16 +191,23 @@ func init() {
 func init() { proto.RegisterFile("rate.proto", fileDescriptor_426335fde4cae2d1) }
 
 var fileDescriptor_426335fde4cae2d1 = []byte{
-	// 140 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2a, 0x4a, 0x2c, 0x49,
-	0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x07, 0xb1, 0x8b, 0x0a, 0x92, 0x95, 0xd8, 0xb9,
-	0x58, 0x5d, 0x73, 0x0b, 0x4a, 0x2a, 0x95, 0x94, 0xb9, 0xd8, 0x83, 0x5d, 0xdc, 0x83, 0x12, 0x4b,
-	0x52, 0x85, 0x24, 0xb8, 0xd8, 0x73, 0x53, 0x8b, 0x8b, 0x13, 0xd3, 0x53, 0x25, 0x18, 0x15, 0x18,
-	0x35, 0x98, 0x82, 0x60, 0x5c, 0x23, 0x4b, 0x2e, 0x56, 0x90, 0x8a, 0x22, 0x21, 0x03, 0x2e, 0x2e,
-	0xf7, 0xd4, 0x12, 0x98, 0x06, 0x3e, 0x3d, 0xa8, 0x71, 0x7a, 0x60, 0xb3, 0xa4, 0x04, 0xe0, 0x7c,
-	0xa8, 0x0a, 0x25, 0x06, 0x27, 0x69, 0x2e, 0x9e, 0xcc, 0x7c, 0xbd, 0x74, 0x90, 0x20, 0x48, 0xd2,
-	0x89, 0x13, 0x24, 0x1e, 0x00, 0x72, 0x4c, 0x00, 0x63, 0x12, 0x1b, 0xd8, 0x55, 0xc6, 0x80, 0x00,
-	0x00, 0x00, 0xff, 0xff, 0xe0, 0xf6, 0xea, 0x20, 0xa3, 0x00, 0x00, 0x00,
+	// 252 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x90, 0x41, 0x4b, 0xc3, 0x40,
+	0x10, 0x85, 0x9b, 0x4a, 0x0c, 0x9d, 0x86, 0x52, 0x56, 0xc1, 0x50, 0x0f, 0xd6, 0xf5, 0xd2, 0x53,
+	0x14, 0xfd, 0x01, 0x62, 0xa9, 0xe4, 0xe2, 0xa1, 0xac, 0xf5, 0x5c, 0xa6, 0x75, 0x29, 0x85, 0x66,
+	0x37, 0xec, 0x4e, 0x0e, 0xfa, 0xeb, 0x65, 0xd6, 0x24, 0xc6, 0xdb, 0xce, 0x7b, 0xdf, 0xcc, 0xf2,
+	0x1e, 0x80, 0x43, 0xd2, 0x79, 0xe5, 0x2c, 0x59, 0x91, 0xf0, 0xdb, 0x55, 0x7b, 0x79, 0x03, 0xe3,
+	0x95, 0x35, 0x48, 0x47, 0x6b, 0x3e, 0xd4, 0x9b, 0x98, 0xc2, 0x59, 0xed, 0x4e, 0x59, 0x34, 0x8f,
+	0x16, 0x23, 0xc5, 0x4f, 0xf9, 0x09, 0x93, 0x8d, 0x25, 0x3c, 0xb5, 0x94, 0x17, 0xb7, 0x90, 0x12,
+	0x2b, 0x5b, 0x2c, 0x6d, 0x6d, 0x28, 0xc0, 0x43, 0x35, 0x0e, 0xda, 0x4b, 0x90, 0xc4, 0x3d, 0x5c,
+	0x98, 0xba, 0xdc, 0x69, 0xb7, 0x25, 0x87, 0xc6, 0xe3, 0x3e, 0x6c, 0x66, 0xc3, 0x79, 0xb4, 0x88,
+	0x95, 0xf8, 0xb5, 0x36, 0x3d, 0x47, 0x26, 0x10, 0xbf, 0x96, 0x15, 0x7d, 0xc9, 0x3b, 0x48, 0xde,
+	0x57, 0x85, 0x42, 0xd2, 0x22, 0x83, 0xa4, 0xd4, 0xde, 0xe3, 0x41, 0x37, 0x5f, 0xb4, 0xe3, 0xe3,
+	0x37, 0xc4, 0x4c, 0x38, 0xf1, 0x00, 0x50, 0x68, 0x6a, 0x17, 0x26, 0x79, 0x93, 0x2a, 0x0f, 0xb7,
+	0x66, 0xd3, 0x6e, 0x6e, 0x08, 0x39, 0x10, 0xcf, 0x90, 0x16, 0x9a, 0xfe, 0xc2, 0x5c, 0x76, 0x4c,
+	0xaf, 0x86, 0xd9, 0x55, 0xa7, 0xfe, 0xcf, 0x2e, 0x07, 0xcb, 0x6b, 0x48, 0x8f, 0x36, 0x3f, 0xb0,
+	0xc7, 0xcc, 0x72, 0xc4, 0x87, 0xd7, 0x5c, 0xea, 0x3a, 0xda, 0x9d, 0x87, 0x76, 0x9f, 0x7e, 0x02,
+	0x00, 0x00, 0xff, 0xff, 0xf3, 0xe3, 0x2b, 0x2b, 0x6b, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -129,6 +224,7 @@ const _ = grpc.SupportPackageIsVersion4
 type RaterClient interface {
 	// Sends a greeting
 	GetSDGRate(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*SDGRate, error)
+	GetDonations(ctx context.Context, in *DonationURL, opts ...grpc.CallOption) (*TotalDonations, error)
 }
 
 type raterClient struct {
@@ -148,10 +244,20 @@ func (c *raterClient) GetSDGRate(ctx context.Context, in *Empty, opts ...grpc.Ca
 	return out, nil
 }
 
+func (c *raterClient) GetDonations(ctx context.Context, in *DonationURL, opts ...grpc.CallOption) (*TotalDonations, error) {
+	out := new(TotalDonations)
+	err := c.cc.Invoke(ctx, "/raterpc.Rater/GetDonations", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RaterServer is the server API for Rater service.
 type RaterServer interface {
 	// Sends a greeting
 	GetSDGRate(context.Context, *Empty) (*SDGRate, error)
+	GetDonations(context.Context, *DonationURL) (*TotalDonations, error)
 }
 
 // UnimplementedRaterServer can be embedded to have forward compatible implementations.
@@ -160,6 +266,9 @@ type UnimplementedRaterServer struct {
 
 func (*UnimplementedRaterServer) GetSDGRate(ctx context.Context, req *Empty) (*SDGRate, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSDGRate not implemented")
+}
+func (*UnimplementedRaterServer) GetDonations(ctx context.Context, req *DonationURL) (*TotalDonations, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDonations not implemented")
 }
 
 func RegisterRaterServer(s *grpc.Server, srv RaterServer) {
@@ -184,6 +293,24 @@ func _Rater_GetSDGRate_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Rater_GetDonations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DonationURL)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RaterServer).GetDonations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/raterpc.Rater/GetDonations",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RaterServer).GetDonations(ctx, req.(*DonationURL))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Rater_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "raterpc.Rater",
 	HandlerType: (*RaterServer)(nil),
@@ -191,6 +318,10 @@ var _Rater_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetSDGRate",
 			Handler:    _Rater_GetSDGRate_Handler,
+		},
+		{
+			MethodName: "GetDonations",
+			Handler:    _Rater_GetDonations_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

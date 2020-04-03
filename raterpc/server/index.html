@@ -1,0 +1,287 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head dir="rtl">
+<title>القوّمة للسودان</title>
+<meta charset="UTF-8">
+<meta name="description" content="الحملة الشعبية للبناء و التعمير">
+<meta name="keywords" content="السودان, html">
+
+
+
+<!-- Favicon -->
+<link href="resources/img/main/ico.png;jsessionid=051AFF09D3CDB169856B10377A1977A0"
+	rel="shortcut icon" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+<meta name="author" content="EBS">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet"
+	href="resources/css/bootstrap.min.css;jsessionid=051AFF09D3CDB169856B10377A1977A0" />
+<link rel="stylesheet"
+	href="css/font-awesome.min.css;jsessionid=051AFF09D3CDB169856B10377A1977A0" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- MAIN CSS -->
+<link rel="stylesheet"
+	href="resources/css/templatemo-style.css;jsessionid=051AFF09D3CDB169856B10377A1977A0" />
+
+
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    jQuery(document).ready(function( $ ) {
+        $('.counter').counterUp({
+            delay: 100,
+            time: 10000
+        });
+    });
+  </script>
+
+<script>
+
+  var looper;
+  var degrees = 0;
+  function rotateAnimation(el,speed){
+  	var elem = document.getElementById(el);
+  	if(navigator.userAgent.match("Chrome")){
+  		elem.style.WebkitTransform = "rotate("+degrees+"deg)";
+  	} else if(navigator.userAgent.match("Firefox")){
+  		elem.style.MozTransform = "rotate("+degrees+"deg)";
+  	} else if(navigator.userAgent.match("MSIE")){
+  		elem.style.msTransform = "rotate("+degrees+"deg)";
+  	} else if(navigator.userAgent.match("Opera")){
+  		elem.style.OTransform = "rotate("+degrees+"deg)";
+  	} else {
+  		elem.style.transform = "rotate("+degrees+"deg)";
+  	}
+  	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
+  	degrees++;
+  	if(degrees > 359){
+  		degrees = 1;
+  	}
+  	document.getElementById("somethingtoberotated").innerHTML = "rotate("+degrees+"deg)";
+  }
+
+  </script>
+
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"> </script>
+
+
+
+</head>
+<body>
+
+	<!-- PRE LOADER -->
+	<section class="preloader">
+		<div class="spinner">
+			<span class="spinner-rotate"></span>
+		</div>
+	</section>
+
+
+	<!-- MENU -->
+	<!-- MENU -->
+	<section class="navbar navbar-inverse custom-navbar navbar-fixed-top"
+		role="navigation" text-align="right" dir="rtl">
+		<div class="container" align="right" dir="rtl">
+
+			<div class="navbar-header" align="right" dir="rtl">
+				<button class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon icon-bar"></span> <span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+				</button>
+
+				<!-- lOGO TEXT HERE -->
+				<a href="#home" class="navbar-brand"> <img id="img178"
+					src="resources/images/color-t.png;jsessionid=051AFF09D3CDB169856B10377A1977A0" alt="cog1"
+					height="30" weidth="50"></a>
+			</div>
+
+			<!-- MENU LINKS -->
+			<div class="collapse navbar-collapse" align="right" dir="rtl">
+				<ul class="nav navbar-nav navbar-nav-first">
+					<li><a href="#home" class="smoothScroll">الرئيسية</a></li>
+					<li><a href="#donations" class="smoothScroll">احصائيات
+							التبرعات</a></li>
+					<li><a href="#how" class="smoothScroll">كيفية التبرع</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="https://www.facebook.com/StandForSudan"><i
+							class="fa fa-facebook-square"></i></a></li>
+					<li><a href="https://www.twitter.com/StandForSudan_"><i
+							class="fa fa-twitter"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+	</section>
+
+
+	<!-- HOME -->
+	<section id="home" data-stellar-background-ratio="0.5"
+		text-align="right">
+		<div class="overlay"></div>
+		<div class="container">
+
+			<div class="row" dir="rtl" align="right">
+				<div class="col-md-6 col-sm-12" align="right"></div>
+				<div class="col-md-6 col-sm-12" align="right">
+					<div class="home-info">
+
+						<h1>القومة للسودان</h1>
+						<h2>الحملة الشعبية للبناء والتعمير</h2>
+						<h2></h2>
+						<br></br> <a href="#donations"
+							class="btn section-btn smoothScroll">اضغط لمعرفة احصائيات
+							التبرعات حتى الان</a> <span> <br></br>
+
+						</span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<!-- ABOUT -->
+	<section id="donations" data-stellar-background-ratio="0.5">
+		<div class="container">
+
+			<div class="row" align="center" dir="rtl">
+
+				<div class="col-lg-4" align="center">
+					<div class="authoritie-item" align="center">
+						<h1>عدد التبرعات</h1>
+						<h2>
+							<span type="number" style="display: inline-block; width: 32%">31,637</span>
+						</h2>
+						<h3>معاملة</h3>
+
+					</div>
+				</div>
+
+
+				<div class="col-lg-4">
+					<div class="authoritie-item">
+						<br></br> <img id="img1767"
+							src="resources/images/test.gif;jsessionid=051AFF09D3CDB169856B10377A1977A0" 
+							height="220" weidth="230">
+						<script>rotateAnimation("img1",30);</script>
+						<br></br>
+
+
+					</div>
+				</div>
+
+
+				<div class="col-lg-4">
+					<div class="authoritie-item">
+						<h1>جملة التبرعات</h1>
+						<h2>
+							<span  type="number" style="display: inline-block; width: 32%">22,747,607</span>
+						</h2>
+						<h3>جنيه سوداني</h3>
+
+
+					</div>
+				</div>
+
+
+
+
+			</div>
+			<div align="middle">
+				<br></br>  <small align="middle">البيانات تمثل جملة
+					مدخلات حساب القومة للسودان و تحدث تلقائيا كل 60 ثانية</small>
+				<div></div>
+	</section>
+
+	<section id="how" data-stellar-background-ratio="0.5">
+		<footer data-stellar-background-ratio="0.5" align="right">
+			<div class="container" align="right" dir="rtl">
+
+
+
+			
+
+                    					<div class="col-md-6 col-sm-7">
+                    </div>
+					<div class="col-md-6 col-sm-7">
+						<div class="footer-thumb footer-info">
+							<h2>القومة للسودان</h2>
+							<h3 style="color:yellow;">يمكن التبرع لحساب القومة للسودان عبر قنوات الدفع المختلفة </h3>
+							<p>
+							<ul class="footer-link">
+								<li><a href="#">تطبيقات الدفع الالكتروني</a></li>
+								<li><a href="#">تطبيقات البنوك</a></li>
+								<li><a href="#">نوافذ البنوك</a></li>
+								<li><a href="#">نقاط البيع</a></li>
+								<li><a href="#"> شركات الاتصالات</a></li>
+								<li><a href="#">خدمات الرسائل (ٍسودابان)</a></li>
+								<li><a href="#">الصرافات الالية</a></li>
+								<li><a href="#">نظام الدفع عبر الموبايل</a></li>
+
+							</ul>
+							</p>
+						</div>
+					</div>
+
+
+
+					<div class="col-md-12 col-sm-12">
+						<div class="footer-bottom">
+							<div class="col-md-6 col-sm-5">
+								<div class="copyright-text">
+									<p>Copyright &copy; 2020 Electronic Banking Services</p>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-7">
+								<div class="phone-contact">
+									<p>
+										<span>StandForSudan</span>
+									</p>
+								</div>
+								<ul class="social-icon">
+									<li><a href="https://www.facebook.com/StandForSudan"
+										class="fa fa-facebook-square" attr="facebook icon"></a></li>
+									<li><a href="https://www.twitter.com/StandForSudan_"
+										class="fa fa-twitter"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+		</footer>
+	</section>
+
+	<!-- MODAL -->
+
+
+	<!-- SCRIPTS -->
+	<script src="resources/js/jquery.js;jsessionid=051AFF09D3CDB169856B10377A1977A0"></script>
+	<script src="resources/js/bootstrap.min.js;jsessionid=051AFF09D3CDB169856B10377A1977A0"></script>
+	<script src="resources/js/jquery.stellar.min.js;jsessionid=051AFF09D3CDB169856B10377A1977A0"></script>
+	<script
+		src="resources/js/jquery.magnific-popup.min.js;jsessionid=051AFF09D3CDB169856B10377A1977A0"></script>
+	<script src="resources/js/custom.js;jsessionid=051AFF09D3CDB169856B10377A1977A0"></script>
+		<script src="resources/js/smoothscroll.js;jsessionid=051AFF09D3CDB169856B10377A1977A0"></script>
+	
+
+</body>
+</html>

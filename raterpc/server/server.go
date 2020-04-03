@@ -26,6 +26,15 @@ func (s *server) GetSDGRate(ctx context.Context, in *pb.Empty) (*pb.SDGRate, err
 	return &pb.SDGRate{Message: rate}, nil
 }
 
+func (s *server) GetDonations(ctx context.Context, in *pb.DonationURL) (*pb.TotalDonations, error) {
+	var e ebs
+	data := e.getOnline(in.GetUrl())
+	number, _ := strconv.ParseFloat(data[0], 32)
+	amount, _ := strconv.ParseFloat(data[1], 32)
+
+	return &pb.TotalDonations{TotalAmount: float32(number), NumberTransactions: int32(amount)}, nil
+}
+
 func getRate() float32 {
 	a := extract("https://www.price-today.com/currency-prices-sudan/")
 	fmt.Printf("The values are: %v\n", a)

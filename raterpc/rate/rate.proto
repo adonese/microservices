@@ -11,12 +11,17 @@ package raterpc;
 service Rater {
   // Sends a greeting
   rpc GetSDGRate(Empty) returns (SDGRate) {}
+  rpc GetDonations(DonationURL) returns (TotalDonations) {}
 }
 
-// The request message containing the user's name.
-//message HelloRequest {
-//  string name = 1;
-//}
+message DonationURL {
+  string url = 1;
+}
+
+message TotalDonations {
+  float total_amount = 1;
+  int32 number_transactions = 2;
+}
 
 message Empty {
 

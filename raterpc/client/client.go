@@ -33,4 +33,7 @@ func main() {
 		log.Fatalf("could not greet: %v", err)
 	}
 	log.Printf("Greeting: %f", r.Message)
+
+	// ebs, err := c.GetDonations(context.Background(), "https://ebs-sd.com:444/StandForSudan/")
+
 }
