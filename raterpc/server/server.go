@@ -33,8 +33,16 @@ func (s *server) GetDonations(ctx context.Context, in *pb.DonationURL) (*pb.Tota
 	if !ok {
 		return nil, errors.New("couldn't get exact data from ebs")
 	}
-	number, _ := strconv.ParseFloat(data[0], 32)
-	amount, _ := strconv.ParseFloat(data[1], 32)
+	log.Printf("The data is: %s, %s", data[0], data[1])
+	number, err := strconv.Atoi(data[0])
+	if err != nil {
+		return nil, fmt.Errorf("unable to convert data: %v", err)
+	}
+	amount, err := strconv.Atoi(data[1])
+
+	if err != nil {
+		return nil, fmt.Errorf("unable to convert data: %v", err)
+	}
 
 	return &pb.TotalDonations{TotalAmount: float32(number), NumberTransactions: int32(amount)}, nil
 }

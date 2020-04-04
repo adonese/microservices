@@ -58,11 +58,18 @@ type ebs struct {
 func (e ebs) getOnline(url string) (bool, []string) {
 	res, err := http.Get(url)
 	if err != nil {
-		return false, nil
+		log.Printf("Error in getting data: %v", err)
+		return false, []string{""}
 	}
+
+	// b, _ := ioutils.ReadAll(res.Body)
 	defer res.Body.Close()
-	d := e.extractEBS(res.Request.Body)
-	return len(d) >= 2, d
+	d := e.extractEBS(res.Body)
+	//fixme
+	for c := range d {
+		d[c] = strings.Replace(d[c], ",", "", -1)
+	}
+	return true, d
 }
 
 func (e ebs) extractEBS(data io.Reader) []string {
