@@ -75,9 +75,10 @@ func (e ebs) extractEBS(data io.Reader) []string {
 	}
 	var f func(*html.Node)
 	f = func(n *html.Node) {
+
 		if n.Type == html.ElementNode && n.Data == "span" {
 
-			if n.Parent.Data == "h2" {
+			if n.Parent.Data == "h3" {
 				log.Printf("Next data is: %#v", n.FirstChild)
 				links = append(links, n.FirstChild.Data)
 			}

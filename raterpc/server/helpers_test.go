@@ -36,7 +36,29 @@ func Test_ebs_extractEBS(t *testing.T) {
 	f, _ := ioutil.ReadFile("index.html")
 	data := bytes.NewReader(f)
 
-	f2, err := http.Get("https://ebs-sd.com:444/StandForSudan/")
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{"testing reader", args{data: data}, []string{"data"}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			e := ebs{}
+			if got := e.extractEBS(tt.args.data); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ebs.extractEBS() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_ebs_extractEBSInternet(t *testing.T) {
+	type args struct {
+		data io.Reader
+	}
+
+	f2, err := http.Get("https://standforsudan.ebs-sd.com/StandForSudan/")
 	if err != nil {
 		t.Fatalf("Error in http.Get: %v", err)
 	}
@@ -49,7 +71,6 @@ func Test_ebs_extractEBS(t *testing.T) {
 		args args
 		want []string
 	}{
-		{"testing reader", args{data: data}, []string{"data"}},
 		{"test from internet", args{data: f2.Body}, []string{"data1"}},
 	}
 	for _, tt := range tests {
