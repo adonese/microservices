@@ -7,7 +7,7 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/adonese/microservices/key/key"
+	pb "github.com/adonese/microservices/key"
 
 	"google.golang.org/grpc"
 )
@@ -57,13 +57,13 @@ func (s *server) GetPurchase(ctx context.Context, in *pb.PurchaseRequest) (*pb.R
 		ClientID:     in.ClientID,
 		STAN:         int(in.STAN),
 		CardFields: CardFields{
-		Pan: in.Pan,
-		Expdate: in.Expdate,
-		Pin: in.Pin,
+			Pan:     in.Pan,
+			Expdate: in.Expdate,
+			Pin:     in.Pin,
 		},
 		AmountFields: AmountFields{
-		Amount: in.Amount,
-		Currency: in.Currency,
+			Amount:   in.Amount,
+			Currency: in.Currency,
 		},
 	}
 
